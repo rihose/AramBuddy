@@ -166,8 +166,8 @@ namespace AramBuddy.MainCore.Logics
             {
                 if (ObjectsManager.SafeAllyTurret != null)
                 {
-                    Program.Moveto = "DefendingTower";
-                    Position = ObjectsManager.DefendingTower.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
+                    Program.Moveto = "SafeAllyTurretFlee";
+                    Position = ObjectsManager.SafeAllyTurret.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
                     return;
                 }
                 if (ObjectsManager.AllySpawn != null)
