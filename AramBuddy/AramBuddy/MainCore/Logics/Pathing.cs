@@ -209,6 +209,10 @@ namespace AramBuddy.MainCore.Logics
                 && NearestEnemy != null && NearestEnemy.TeamTotal() >= NearestEnemy.TeamTotal(true)
                 && NearestEnemy.CountAllyHeros(SafeValue) > 1)
             {
+                 // if there is a TeamFight move from NearestEnemy to nearestally.
+                if (ObjectsManager.SafestAllyToFollow != null)
+                {
+                    var pos = NearestEnemy.KitePos(ObjectsManager.SafestAllyToFollow);
                     if (Player.Instance.SafePath(pos))
                     {
                         Program.Moveto = "NearestEnemyToNearestAlly";
