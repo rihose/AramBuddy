@@ -454,22 +454,6 @@ namespace AramBuddy.MainCore.Logics
                 Position = ObjectsManager.AllyMinion.PredictPosition().Extend(ObjectsManager.AllySpawn, 100).Random();
                 return true;
             }
-            
-            // if SecondTurret exsists moves to SecondTurret.
-            if (ObjectsManager.SecondTurret != null)
-            {
-                Program.Moveto = "SecondTurret";
-                Position = ObjectsManager.SecondTurret.ServerPosition.Extend(ObjectsManager.AllySpawn, 425).To3D().Random();
-                return true;
-            }
-
-            // if SafeAllyTurret exsists moves to SafeAllyTurret.
-            if (ObjectsManager.SafeAllyTurret != null)
-            {
-                Program.Moveto = "SafeAllyTurret";
-                Position = ObjectsManager.SafeAllyTurret.ServerPosition.Extend(ObjectsManager.AllySpawn, 425).To3D().Random();
-                return true;
-            }
 
             // if ClosesetAllyTurret exsists moves to ClosesetAllyTurret.
             if (ObjectsManager.ClosesetAllyTurret != null)
