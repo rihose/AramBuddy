@@ -155,8 +155,8 @@ namespace AramBuddy.MainCore.Logics
             // Moves to the Farthest Ally if the bot has Autsim
             if (Brain.Alone() && ObjectsManager.FarthestAllyToFollow != null && Player.Instance.Distance(ObjectsManager.AllySpawn) <= 3000)
             {
-                Program.Moveto = "FarthestAllyToFollow";
-                Position = ObjectsManager.FarthestAllyToFollow.PredictPosition().Random();
+                Program.Moveto = "NearestEnemyMinion";
+                Position = ObjectsManager.NearestEnemyMinion.PredictPosition().Random();
                 return;
             }
 
@@ -166,8 +166,8 @@ namespace AramBuddy.MainCore.Logics
             {
                 if (ObjectsManager.SafeAllyTurret != null)
                 {
-                    Program.Moveto = "SafeAllyTurretFlee";
-                    Position = ObjectsManager.SafeAllyTurret.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
+                    Program.Moveto = "NearestEnemyMinion";
+                    Position = ObjectsManager.NearestEnemyMinion.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
                     return;
                 }
                 if (ObjectsManager.AllySpawn != null)
@@ -181,8 +181,8 @@ namespace AramBuddy.MainCore.Logics
             // Moves to AllySpawn if the bot is diving and it's not safe to dive.
             if (((Player.Instance.UnderEnemyTurret() && !SafeToDive) || MyHero.TurretAttackingMe) && ObjectsManager.AllySpawn != null)
             {
-                Program.Moveto = "AllySpawn2";
-                Position = ObjectsManager.AllySpawn.Position.Random();
+                Program.Moveto = "NearestEnemy";
+                Position = ObjectsManager.NearestEnemy.Position.Random();
                 return;
             }
             
