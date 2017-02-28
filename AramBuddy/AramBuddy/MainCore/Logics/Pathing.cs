@@ -170,12 +170,6 @@ namespace AramBuddy.MainCore.Logics
                     Position = ObjectsManager.SafeAllyTurret.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
                     return;
                 }
-                if (ObjectsManager.AllySpawn != null)
-                {
-                    Program.Moveto = "AllySpawnFlee";
-                    Position = ObjectsManager.AllySpawn.Position.Random();
-                    return;
-                }
             }
 
             // Moves to AllySpawn if the bot is diving and it's not safe to dive.
