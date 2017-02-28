@@ -153,10 +153,10 @@ namespace AramBuddy.MainCore.Logics
             }*/
 
             // Moves to the Farthest Ally if the bot has Autsim
-            if (Brain.Alone() && ObjectsManager.FarthestAllyToFollow != null && Player.Instance.Distance(ObjectsManager.AllySpawn) <= 3000)
+            if (Brain.Alone() && ObjectsManager.AllyMinion != null && Player.Instance.Distance(ObjectsManager.AllySpawn) <= 3000)
             {
-                Program.Moveto = "FarthestAllyToFollow";
-                Position = ObjectsManager.FarthestAllyToFollow.PredictPosition().Random();
+                Program.Moveto = "AllyMinion";
+                Position = ObjectsManager.AllyMinion.PredictPosition().Random();
                 return;
             }
 
