@@ -152,6 +152,14 @@ namespace AramBuddy.MainCore.Logics
                 return;
             }*/
 
+            // Moves to the Farthest Ally if the bot has Autsim
+            if (Brain.Alone() && ObjectsManager.FarthestAllyToFollow != null && Player.Instance.Distance(ObjectsManager.AllySpawn) <= 3000)
+            {
+                Program.Moveto = "DefendingTower";
+                Position = ObjectsManager.DefendingTower.PredictPosition().Random();
+                return;
+            }
+
             // Stays Under tower if the bot health under 10%.
             if ((ModesManager.CurrentMode == ModesManager.Modes.Flee || (Player.Instance.PredictHealthPercent() < 10 && Player.Instance.CountAllyHeros(SafeValue + 2000) < 3))
                 && EntityManager.Heroes.Enemies.Count(e => e.IsValid && !e.IsDead && e.IsInRange(Player.Instance, SafeValue + 200)) > 0)
@@ -162,13 +170,19 @@ namespace AramBuddy.MainCore.Logics
                     Position = ObjectsManager.DefendingTower.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
                     return;
                 }
+                if (ObjectsManager.AllySpawn != null)
+                {
+                    Program.Moveto = "DefendingTower";
+                    Position = ObjectsManager.DefendingTower.Position.Random();
+                    return;
+                }
             }
 
             // Moves to AllySpawn if the bot is diving and it's not safe to dive.
             if (((Player.Instance.UnderEnemyTurret() && !SafeToDive) || MyHero.TurretAttackingMe) && ObjectsManager.AllySpawn != null)
             {
-                Program.Moveto = "DefendingTower";
-                Position = ObjectsManager.DefendingTower.Position.Random();
+                Program.Moveto = "AllySpawn2";
+                Position = ObjectsManager.AllySpawn.Position.Random();
                 return;
             }
             
@@ -299,12 +313,29 @@ namespace AramBuddy.MainCore.Logics
                 Position = ObjectsManager.NearestEnemyMinion.PredictPosition().Extend(AllySpawn.Position.Random(), KiteDistance(ObjectsManager.NearestEnemyMinion)).To3D();
                 return true;
             }
+
+            // if SafestAllyToFollow not exsist picks other to follow.
+            if (ObjectsManager.SafestAllyToFollow != null)
+            {
+                // if SafestAllyToFollow exsist follow BestAllyToFollow.
+                Program.Moveto = "NearestEnemyMinion";
+                Position = ObjectsManager.NearestEnemyMinion.PredictPosition().Random();
+                return true;
+            }
             
             // if Minion exsists moves to Minion.
             if (ObjectsManager.AllyMinion != null)
             {
-                Program.Moveto = "EnemyMinion";
-                Position = ObjectsManager.EnemyMinion.PredictPosition().Random();
+                Program.Moveto = "AllyMinion";
+                Position = ObjectsManager.AllyMinion.PredictPosition().Random();
+                return true;
+            }
+
+            // if FarthestAllyToFollow exsists moves to FarthestAllyToFollow.
+            if (ObjectsManager.FarthestAllyToFollow != null)
+            {
+                Program.Moveto = "DefendingTower";
+                Position = ObjectsManager.DefendingTower.PredictPosition().Random();
                 return true;
             }
 
@@ -452,6 +483,14 @@ namespace AramBuddy.MainCore.Logics
             {
                 Program.Moveto = "NearestEnemyMinion";
                 Position = NearestEnemyMinion.PredictPosition().Extend(ObjectsManager.AllySpawn.Position.Random(), KiteDistance(NearestEnemyMinion)).To3D();
+                return true;
+            }
+
+            // if SafestAllyToFollow2 exsists moves to SafestAllyToFollow2.
+            if (ObjectsManager.SafestAllyToFollow2 != null)
+            {
+                Program.Moveto = "DefendingTower";
+                Position = ObjectsManager.DefendingTower.PredictPosition().Extend(ObjectsManager.AllySpawn, 100).Random();
                 return true;
             }
             
