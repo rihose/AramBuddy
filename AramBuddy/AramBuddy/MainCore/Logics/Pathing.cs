@@ -155,8 +155,8 @@ namespace AramBuddy.MainCore.Logics
             // Moves to the Farthest Ally if the bot has Autsim
             if (Brain.Alone() && ObjectsManager.AllyMinion != null && Player.Instance.Distance(ObjectsManager.AllySpawn) <= 3000)
             {
-                Program.Moveto = "NearestEnemyMinion";
-                Position = ObjectsManager.NearestEnemyMinion.PredictPosition().Random();
+                Program.Moveto = "NearestEnemyToNearestAlly";
+                Position = ObjectsManager.NearestEnemyToNearestAlly.PredictPosition().Random();
                 return;
             }
 
