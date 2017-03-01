@@ -458,7 +458,7 @@ namespace AramBuddy.MainCore.Logics
             // if ClosesetAllyTurret exsists moves to ClosesetAllyTurret.
             if (ObjectsManager.ClosesetAllyTurret != null)
             {
-                Program.Moveto = "ClosesetAllyTurret";
+                Program.Moveto = "NearestEnemyMinion";
                 Position = ObjectsManager.ClosesetAllyTurret.ServerPosition.Extend(ObjectsManager.AllySpawn, 425).To3D().Random();
                 return true;
             }
