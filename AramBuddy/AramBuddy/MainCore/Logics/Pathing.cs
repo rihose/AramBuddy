@@ -488,8 +488,8 @@ namespace AramBuddy.MainCore.Logics
             // Well if it ends up like this then best thing is to let it end.
             if (ObjectsManager.AllySpawn != null)
             {
-                Program.Moveto = "AllySpawn3";
-                Position = ObjectsManager.AllySpawn.Position.Random();
+                Program.Moveto = "NearestEnemy";
+                Position = ObjectsManager.NearestEnemy.Position.Random();
                 return true;
             }
             return false;
