@@ -156,6 +156,18 @@ namespace AramBuddy.MainCore.Logics
             if ((ModesManager.CurrentMode == ModesManager.Modes.Flee || (Player.Instance.PredictHealthPercent() < 10 && Player.Instance.CountAllyHeros(SafeValue + 2000) < 3))
                 && EntityManager.Heroes.Enemies.Count(e => e.IsValid && !e.IsDead && e.IsInRange(Player.Instance, SafeValue + 200)) > 0)
             {
+                 if (ObjectsManager.SafeAllyTurret != null)
+                {
+                    Program.Moveto = "SafeAllyTurretFlee";
+                    Position = ObjectsManager.SafeAllyTurret.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
+                    return;
+                }
+                if (ObjectsManager.AllySpawn != null)
+                {
+                    Program.Moveto = "AllySpawnFlee";
+                    Position = ObjectsManager.AllySpawn.Position.Random();
+                    return;
+                }
                 
             if (Player.Instance.GetAutoAttackRange() < 425)
             {
