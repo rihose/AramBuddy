@@ -303,16 +303,16 @@ namespace AramBuddy.MainCore.Logics
             // if SafeAllyTurret exsists moves to SafeAllyTurret.
             if (ObjectsManager.SafeAllyTurret != null)
             {
-                Program.Moveto = "SafeAllyTurret";
-                Position = ObjectsManager.SafeAllyTurret.ServerPosition.Extend(AllySpawn, 400).To3D().Random();
+                Program.Moveto = "NearestAlly";
+                Position = ObjectsManager.NearestAlly.ServerPosition.Extend(AllySpawn, 400).To3D().Random();
                 return true;
             }
 
             // if ClosesetAllyTurret exsists moves to ClosesetAllyTurret.
             if (ObjectsManager.ClosesetAllyTurret != null)
             {
-                Program.Moveto = "ClosesetAllyTurret";
-                Position = ObjectsManager.ClosesetAllyTurret.ServerPosition.Extend(AllySpawn, 400).To3D().Random();
+                Program.Moveto = "NearestAlly";
+                Position = ObjectsManager.NearestAlly.ServerPosition.Extend(AllySpawn, 400).To3D().Random();
                 return true;
             }
 
