@@ -22,7 +22,13 @@ namespace AramBuddy.MainCore.Logics
         ///     Picking best Position to move to.
         /// </summary>
         public static void BestPosition()
-        {          
+        {  
+            if (EnableTeleport && ObjectsManager.ClosestAlly != null)
+            {
+                Program.Moveto = "Teleporting";
+                Teleport.Cast();
+            }
+            
             // If player is Zombie moves follow nearest Enemy.
             if (Player.Instance.IsZombie())
             {
@@ -149,6 +155,15 @@ namespace AramBuddy.MainCore.Logics
             // Stays Under tower if the bot health under 10%.
             if ((ModesManager.CurrentMode == ModesManager.Modes.Flee || (Player.Instance.PredictHealthPercent() < 10 && Player.Instance.CountAllyHeros(SafeValue + 2000) < 3))
                 && EntityManager.Heroes.Enemies.Count(e => e.IsValid && !e.IsDead && e.IsInRange(Player.Instance, SafeValue + 200)) > 0)
+              
+                {
+                if (ObjectsManager.SafeAllyTurret != null)
+                {
+                    Program.Moveto = "NearestAlly";
+                    Position = ObjectsManager.SafeAllyTurret.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
+                    return;
+                }
+            }
                 
             if (Player.Instance.GetAutoAttackRange() < 425)
             {
