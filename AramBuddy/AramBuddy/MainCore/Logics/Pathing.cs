@@ -22,13 +22,7 @@ namespace AramBuddy.MainCore.Logics
         ///     Picking best Position to move to.
         /// </summary>
         public static void BestPosition()
-        {
-            if (EnableTeleport && ObjectsManager.ClosestAlly != null)
-            {
-                Program.Moveto = "Teleporting";
-                Teleport.Cast();
-            }
-            
+        {          
             // If player is Zombie moves follow nearest Enemy.
             if (Player.Instance.IsZombie())
             {
