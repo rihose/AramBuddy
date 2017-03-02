@@ -306,14 +306,6 @@ namespace AramBuddy.MainCore.Logics
                 return true;
             }
 
-            // if FarthestAllyToFollow exsists moves to FarthestAllyToFollow.
-            if (ObjectsManager.FarthestAllyToFollow != null)
-            {
-                Program.Moveto = "FarthestAllyToFollow";
-                Position = ObjectsManager.FarthestAllyToFollow.PredictPosition().Random();
-                return true;
-            }
-
             // if SecondTurret exsists moves to SecondTurret.
             if (ObjectsManager.SecondTurret != null)
             {
