@@ -294,10 +294,10 @@ namespace AramBuddy.MainCore.Logics
             }
             
             // if Minion exsists moves to Minion.
-            if (ObjectsManager.NearestEnemyMinion != null)
+            if (ObjectsManager.NearestEnemy != null)
             {
-                Program.Moveto = "NearestEnemyToNearestAlly";
-                Position = ObjectsManager.NearestEnemyToNearestAlly.PredictPosition().Random();
+                Program.Moveto = "NearestEnemy";
+                Position = ObjectsManager.NearestEnemy.PredictPosition().Random();
                 return true;
             }
 
