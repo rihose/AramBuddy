@@ -437,7 +437,7 @@ namespace AramBuddy.MainCore.Logics
             if (ObjectsManager.SecondTurret != null)
             {
                 Program.Moveto = "NearestEnemyToNearestAlly";
-                Position = NearestAlly.Position.Random();
+                Position = ObjectsManager.NearestAlly.PredictPosition().Extend(AllySpawn, 400).To3D().Random();
                 return true;
             }
 
