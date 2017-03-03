@@ -293,14 +293,6 @@ namespace AramBuddy.MainCore.Logics
                 Position = ObjectsManager.NearestEnemy.PredictPosition().Random();
                 return true;
             }
-            
-            // if SafeAllyTurret exsists moves to SafeAllyTurret.
-            if (ObjectsManager.NearestAlly != null)
-            {
-                Program.Moveto = "NearestEnemyToNearestAlly";
-                Position = ObjectsManager.NearestEnemyToNearestAlly.ServerPosition.Extend(AllySpawn, 400).To3D().Random();
-                return true;
-            }
 
             // if SecondTurret exsists moves to SecondTurret.
             if (ObjectsManager.SecondTurret != null)
