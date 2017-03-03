@@ -306,7 +306,7 @@ namespace AramBuddy.MainCore.Logics
             if (ObjectsManager.NearestEnemy != null)
             {
                 Program.Moveto = "NearestEnemyObject";
-                Position = ObjectsManager.NearestEnemyObject.PredictPosition().Random();
+                Position = ObjectsManager.NearestEnemyMinion.PredictPosition().Random();
                 return true;
             }
 
