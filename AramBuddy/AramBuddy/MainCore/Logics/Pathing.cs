@@ -297,8 +297,8 @@ namespace AramBuddy.MainCore.Logics
             // if SafeAllyTurret exsists moves to SafeAllyTurret.
             if (ObjectsManager.NearestAlly != null)
             {
-                Program.Moveto = "NearestEnemyMinion";
-                Position = ObjectsManager.NearestEnemyMinion.ServerPosition.Extend(AllySpawn, 400).To3D().Random();
+                Program.Moveto = "NearestEnemyToNearestAlly";
+                Position = ObjectsManager.NearestEnemyToNearestAlly.ServerPosition.Extend(AllySpawn, 400).To3D().Random();
                 return true;
             }
 
