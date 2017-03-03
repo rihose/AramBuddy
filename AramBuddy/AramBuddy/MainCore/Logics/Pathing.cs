@@ -318,14 +318,6 @@ namespace AramBuddy.MainCore.Logics
                 return true;
             }
 
-            // if ClosesetAllyTurret exsists moves to ClosesetAllyTurret.
-            if (ObjectsManager.ClosesetAllyTurret != null)
-            {
-                Program.Moveto = "NearestAlly";
-                Position = ObjectsManager.NearestAlly.ServerPosition.Extend(AllySpawn, 400).To3D().Random();
-                return true;
-            }
-
             // Well if it ends up like this then best thing is to let it end.
             if (AllySpawn != null)
             {
