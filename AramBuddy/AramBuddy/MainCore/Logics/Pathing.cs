@@ -159,9 +159,9 @@ namespace AramBuddy.MainCore.Logics
                 {
                 if (ObjectsManager.SafeAllyTurret != null)
                 {
-                    Program.Moveto = "NearestEnemyToNearestAlly";
-                    Position = ObjectsManager.SafeAllyTurret.PredictPosition().Random().Extend(ObjectsManager.AllySpawn.Position.Random(), 400).To3D();
-                    return;
+                     Program.Moveto = "NearestEnemyMinion";
+                Position = ObjectsManager.NearestEnemyMinion.PredictPosition().Random();
+                return true;
                 }
             }
                 
