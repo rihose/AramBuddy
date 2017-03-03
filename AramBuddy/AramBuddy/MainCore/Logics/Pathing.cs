@@ -443,8 +443,8 @@ namespace AramBuddy.MainCore.Logics
             var NearestEnemyMinion = ObjectsManager.NearestEnemyMinion;
             if (NearestEnemyMinion != null && MyHero.Instance.SafePath(NearestEnemyMinion) && NearestEnemyMinion.CountEnemyMinionsInRangeWithPrediction(SafeValue) > 1 && ObjectsManager.AllySpawn != null && Player.Instance.PredictHealthPercent() > 20)
             {
-                Program.Moveto = "NearestEnemyToNearestAlly";
-                Position = NearestEnemyToNearestAlly.PredictPosition().Extend(ObjectsManager.AllySpawn.Position.Random(), KiteDistance(NearestEnemyMinion)).To3D();
+                Program.Moveto = "NearestEnemyMinion";
+                Position = NearestEnemyMinion.PredictPosition().Extend(ObjectsManager.AllySpawn.Position.Random(), KiteDistance(NearestEnemyMinion)).To3D();
                 return true;
             }
             
