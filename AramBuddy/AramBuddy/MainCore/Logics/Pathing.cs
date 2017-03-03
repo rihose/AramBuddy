@@ -170,6 +170,23 @@ namespace AramBuddy.MainCore.Logics
                 }
             }
 
+            // Moves to AllySpawn if the bot is diving and it's not safe to dive.
+            if (((Player.Instance.UnderEnemyTurret() && !SafeToDive) || MyHero.TurretAttackingMe) && ObjectsManager.AllySpawn != null)
+            {
+                Program.Moveto = "AllySpawn2";
+                Position = ObjectsManager.AllySpawn.Position.Random();
+                return;
+            }
+            
+            if (Player.Instance.GetAutoAttackRange() < 425)
+            {
+                MeleeLogic();
+            }
+            else
+            {
+                RangedLogic();
+            }
+        }
 
         /// <summary>
         ///     Melee Champions Logic.
