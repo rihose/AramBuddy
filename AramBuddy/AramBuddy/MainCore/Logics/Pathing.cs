@@ -151,6 +151,18 @@ namespace AramBuddy.MainCore.Logics
                 Position = ObjectsManager.CorkiBomb.Position;
                 return;
             }*/
+            
+            // Stays Under tower if the bot health under 10%.
+            if ((ModesManager.CurrentMode == ModesManager.Modes.Flee || (Player.Instance.PredictHealthPercent() < 10 && Player.Instance.CountAllyHeros(SafeValue + 2000) < 3))
+                && EntityManager.Heroes.Enemies.Count(e => e.IsValid && !e.IsDead && e.IsInRange(Player.Instance, SafeValue + 200)) > 0)
+            {
+                if (ObjectsManager.AllySpawn != null)
+                {
+                    Program.Moveto = "AllySpawnFlee";
+                    Position = ObjectsManager.AllySpawn.Position.Random();
+                    return;
+                }
+            }
 
 
         /// <summary>
