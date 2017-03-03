@@ -41,8 +41,8 @@ namespace AramBuddy.MainCore.Logics
                 }
                 if (ObjectsManager.NearestEnemy != null)
                 {
-                    Program.Moveto = "NearestAlly";
-                    Position = ObjectsManager.NearestAlly.PredictPosition();
+                    Program.Moveto = "NearestEnemyMinion";
+                    Position = ObjectsManager.NearestEnemyMinion.PredictPosition();
                     return;
                 }
                 if (ObjectsManager.NearestEnemyMinion != null)
