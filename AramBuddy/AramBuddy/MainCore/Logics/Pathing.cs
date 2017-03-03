@@ -298,7 +298,7 @@ namespace AramBuddy.MainCore.Logics
             if (ObjectsManager.SecondTurret != null)
             {
                 Program.Moveto = "NearestAlly";
-                Position = ObjectsManager.NearestAlly.PredictPosition().Extend(AllySpawn, 400).To3D().Random();
+                Position = ObjectsManager.NearestEnemy.PredictPosition().Extend(AllySpawn, 400).To3D().Random();
                 return true;
             }
 
@@ -436,26 +436,11 @@ namespace AramBuddy.MainCore.Logics
             // if SecondTurret exsists moves to SecondTurret.
             if (ObjectsManager.SecondTurret != null)
             {
-                Program.Moveto = "NearestAlly";
-                Position = ObjectsManager.SecondTurret.ServerPosition.Extend(ObjectsManager.AllySpawn, 425).To3D().Random();
+                Program.Moveto = "NearestEnemyToNearestAlly";
+                Position = NearestEnemyToNearestAlly.Position.Random();
                 return true;
             }
 
-            // if SafeAllyTurret exsists moves to SafeAllyTurret.
-            if (ObjectsManager.SafeAllyTurret != null)
-            {
-                Program.Moveto = "NearestAlly";
-                Position = ObjectsManager.NearestAlly.ServerPosition.Extend(ObjectsManager.AllySpawn, 425).To3D().Random();
-                return true;
-            }
-
-            // if ClosesetAllyTurret exsists moves to ClosesetAllyTurret.
-            if (ObjectsManager.ClosesetAllyTurret != null)
-            {
-                Program.Moveto = "ClosesetAllyTurret";
-                Position = ObjectsManager.ClosesetAllyTurret.ServerPosition.Extend(ObjectsManager.AllySpawn, 425).To3D().Random();
-                return true;
-            }
 
             // Well if it ends up like this then best thing is to let it end.
             if (ObjectsManager.AllySpawn != null)
